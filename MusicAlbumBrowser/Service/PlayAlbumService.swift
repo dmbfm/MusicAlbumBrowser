@@ -22,16 +22,17 @@ class PlayAlbumThread: Thread {
     
     override func main() {
         
-        let src = """
-        tell application "Music"
-             play (every track of playlist "Library" whose album is "\(albumName)")
-        end tell
-        """
+        let playlistName = "MusicAlbumBrowserPlaylist"
         
         let src2 = """
         tell application "Music"
+            
+            if not (user playlist "\(playlistName)" exists) then
+                    make new user playlist with properties {name:"\(playlistName)"}
+                end if
+        
             set albumName to "\(albumName)"
-            set playListName to "Musicshit Playlist"
+            set playListName to "\(playlistName)"
             delete playlist playListName
             set refTracks to (a reference to (tracks where album = albumName))
             
@@ -54,10 +55,6 @@ class PlayAlbumThread: Thread {
         """
         
         var error: NSDictionary?
-        
-        
-        
-        print(src)
         if let scriptObject = NSAppleScript(source: src2) {
             scriptObject.executeAndReturnError(&error)
             //print(error)

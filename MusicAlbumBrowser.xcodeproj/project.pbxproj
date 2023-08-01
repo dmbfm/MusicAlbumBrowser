@@ -44,6 +44,7 @@
 		AE52A4DA2A79CBCB00490DA2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumGridView.swift; sourceTree = "<group>"; };
 		AE52A4DC2A79CBCB00490DA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE52A4ED2A79D2C800490DA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				AE52A4C62A79CBCB00490DA2 /* MusicAlbumBrowser */,
+				AE52A4ED2A79D2C800490DA2 /* README.md */,
 				AE30A28D2A793300006ECA86 /* Products */,
 			);
 			sourceTree = "<group>";
