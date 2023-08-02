@@ -18,7 +18,7 @@ struct AlbumView: View {
         VStack(alignment: .center) {
             //if let nsimage = album.artwork {
                 Button {
-                    playAlbum(albumName: album.title)
+                    playAlbum(album: album)
                 } label: {
                     ZStack {
                         if let nsimage = album.artwork {
@@ -107,6 +107,6 @@ struct AlbumView_Previews: PreviewProvider {
             albumArtist: "Dr. Dre",
             artwork: nil,
             //artwork: nsimage,
-            genre: "Rap"))
+            genre: "Rap", year: 2001))
     }
 }

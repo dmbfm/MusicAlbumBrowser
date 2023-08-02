@@ -22,9 +22,9 @@
 		AE52A4E92A79CBCB00490DA2 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4D92A79CBCB00490DA2 /* AlbumView.swift */; };
 		AE52A4EA2A79CBCB00490DA2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DA2A79CBCB00490DA2 /* MainView.swift */; };
 		AE52A4EB2A79CBCB00490DA2 /* AlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */; };
-		AE52A4EC2A79CBCB00490DA2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE52A4DC2A79CBCB00490DA2 /* Info.plist */; };
 		AE52A4EF2A79D49400490DA2 /* AlbumFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4EE2A79D49400490DA2 /* AlbumFilter.swift */; };
 		AE52A4F22A7AB1F800490DA2 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4F12A7AB1F800490DA2 /* Playlist.swift */; };
+		AE52A4F42A7AC1AA00490DA2 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4F32A7AC1AA00490DA2 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +49,7 @@
 		AE52A4ED2A79D2C800490DA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AE52A4EE2A79D49400490DA2 /* AlbumFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumFilter.swift; sourceTree = "<group>"; };
 		AE52A4F12A7AB1F800490DA2 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		AE52A4F32A7AC1AA00490DA2 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +123,7 @@
 				AE52A4D32A79CBCB00490DA2 /* SortOrder.swift */,
 				AE52A4D42A79CBCB00490DA2 /* SortType.swift */,
 				AE52A4F12A7AB1F800490DA2 /* Playlist.swift */,
+				AE52A4F32A7AC1AA00490DA2 /* Genre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,7 +207,6 @@
 			files = (
 				AE52A4DF2A79CBCB00490DA2 /* Preview Assets.xcassets in Resources */,
 				AE52A4DE2A79CBCB00490DA2 /* Assets.xcassets in Resources */,
-				AE52A4EC2A79CBCB00490DA2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +224,7 @@
 				AE52A4E02A79CBCB00490DA2 /* NSImage+resized.swift in Sources */,
 				AE52A4E92A79CBCB00490DA2 /* AlbumView.swift in Sources */,
 				AE52A4E32A79CBCB00490DA2 /* Album.swift in Sources */,
+				AE52A4F42A7AC1AA00490DA2 /* Genre.swift in Sources */,
 				AE52A4DD2A79CBCB00490DA2 /* MusicAlbumsBrowser.swift in Sources */,
 				AE52A4EA2A79CBCB00490DA2 /* MainView.swift in Sources */,
 				AE52A4E62A79CBCB00490DA2 /* SortType.swift in Sources */,

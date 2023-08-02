@@ -146,7 +146,8 @@ extension Library {
               title: "2001",
               albumArtist: "Dr. Dre",
               artwork: NSImage(named: "dr_dre_2001")!,
-              genre: "Hip-Hop/Rap"
+              genre: "Hip-Hop/Rap",
+              year: 2001
              ),
     ]
     

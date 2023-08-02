@@ -43,7 +43,7 @@ struct AlbumGridView: View {
             ToolbarItem {
                 Button {
                     if let album = self.library.sortedAlbums.randomElement() {
-                        playAlbum(albumName: album.title)
+                        playAlbum(album: album)
                     }
                 } label: {
                     Image(systemName: "shuffle")

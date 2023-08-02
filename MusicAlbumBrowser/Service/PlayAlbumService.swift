@@ -7,17 +7,19 @@
 
 import Foundation
 
-func playAlbum(albumName: String) {
-    let task = PlayAlbumThread(albumName: albumName)
+func playAlbum(album: Album) {
+    let task = PlayAlbumThread(albumName: album.title, albumYear: album.year)
     task.start()
 }
 
 class PlayAlbumThread: Thread {
     
     let albumName: String
+    let albumYear: Int
     
-    init(albumName: String) {
+    init(albumName: String, albumYear: Int) {
         self.albumName = albumName
+        self.albumYear = albumYear
     }
     
     override func main() {
@@ -27,17 +29,14 @@ class PlayAlbumThread: Thread {
         let src2 = """
         tell application "Music"
             
-            if not (user playlist "\(playlistName)" exists) then
-                make new user playlist with properties {name:"\(playlistName)"}
-                delay(0.1)
-            else
-                delete tracks of playlist "\(playlistName)"
-                delay(0.1)
-            end if
+
+            delete tracks of playlist "\(playlistName)"
+            delay(0.1)
+            
         
             set albumName to "\(albumName)"
             set playListName to "\(playlistName)"
-            set refTracks to (a reference to (tracks where album = albumName))
+            set refTracks to (a reference to (tracks where album = albumName and year = \(albumYear)))
             
             set nTracks to count of refTracks
             if 0 < nTracks then
@@ -56,11 +55,13 @@ class PlayAlbumThread: Thread {
             end if
         end tell
         """
-        print(src2)
+
         var error: NSDictionary?
         if let scriptObject = NSAppleScript(source: src2) {
             scriptObject.executeAndReturnError(&error)
-            //print(error)
+            if let error = error {
+                print(error)
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ struct Album: Identifiable {
     var albumArtist: String?
     var artwork: NSImage?
     var genre: String
+    var year: Int
 }
 
 extension Album {
@@ -28,5 +29,6 @@ extension Album {
         self.albumArtist = mediaItem.album.albumArtist
         self.artwork = mediaItem.artwork?.image?.resized(to: NSSize(width: 100, height: 100))
         self.genre = mediaItem.genre
+        self.year = mediaItem.year
     }
 }
