@@ -15,6 +15,8 @@ class Library: ObservableObject {
     @Published var genres: Set<String> = []
     @Published var filteredGenres: Set<String> = []
     
+    @Published var playlists: [Playlist] = []
+    
     var albumFilter: AlbumFilter = .none
     
     var genresFilterString: String = "" {
@@ -101,6 +103,15 @@ class Library: ObservableObject {
         self.albums = service.fetchAlbums()
         sortAndFilter()
         updateGenres()
+    }
+    
+    func fetchPlaylists() throws {
+        if isPreview() {
+            return
+        }
+        
+        let service = try iTunesService()
+        self.playlists = service.fetchPlaylists()
     }
     
     func updateGenres() {

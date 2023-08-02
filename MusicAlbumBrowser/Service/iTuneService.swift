@@ -25,18 +25,47 @@ class iTunesService {
             let album = item.album
             let id = Int(album.persistentID.intValue)
             
-            if result[id] == nil {
-
-                result[id] = Album(id: id,
-                                   title: album.title ?? "Untitled",
-                                   albumArtist: album.albumArtist,
-                                   artwork: item.artwork?.image?.resized(to: NSSize(width: 100, height: 100)),
-                                   genre: item.genre)
+            if item.mediaKind != .kindSong {
+                continue
             }
             
+            if result[id] == nil {
+                result[id] = Album(from: item)
+            }
         }
         
         return result.map { $1 }
+    }
+    
+    func fetchPlaylists() -> [Playlist] {
+        var result: [Playlist] = []
+        for playlist in self.library.allPlaylists {
+                        
+            var albums: [Int:Album] = [:]
+            
+            for item in playlist.items {
+            
+                if item.mediaKind != .kindSong {
+                    continue
+                }
+                
+                let album = item.album
+                let id = Int(album.persistentID.intValue)
+                
+                if albums[id] == nil {
+                    albums[id] = Album(from: item)
+                }
+                
+            }
+            
+            if albums.isEmpty {
+                continue
+            }
+            
+            result.append(Playlist(name: playlist.name, albums: albums.map( \.value ).sorted(by: { $0.title < $1.title })))
+        }
+        
+        return result
     }
     
 }

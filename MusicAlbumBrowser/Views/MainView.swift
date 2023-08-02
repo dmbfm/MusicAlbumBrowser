@@ -18,7 +18,6 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView {
             List(selection: self.$selectedGenre) {
-                
                 HStack {
                     Image(systemName: "music.note.house.fill")
                         .foregroundColor(.pink)
@@ -29,7 +28,6 @@ struct MainView: View {
                 .tag("")
                    
                 Section("Genres") {
-                    
                     HStack {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                         ZStack(alignment: .trailing) {
@@ -58,7 +56,16 @@ struct MainView: View {
                             Text(genre)
                         }
                     }
-                    
+                }
+                
+                Section("Playlists") {
+                    ForEach(self.library.playlists) { playlist in
+                        HStack {
+                            Image(systemName: "music.note.list")
+                                .foregroundColor(.pink)
+                            Text(playlist.name)
+                        }
+                    }
                 }
             }
         } detail: {
@@ -75,18 +82,6 @@ struct MainView: View {
             self.library.sortAndFilter()
             
         }
-//        .onChange(of: self.selectedGenre) { newValue in
-//            if let genre = newValue, genre != "" {
-//                self.library.albumFilter = .genre([genre])
-//            } else {
-//                self.library.albumFilter = .none
-//            }
-//
-//            self.library.sortAndFilter()
-//        }
-//        .onChange(of: self.genreFilterString) { newValue in
-//            self.library.genresFilterString =
-//        }
         .searchable(text: .constant("Two!"), placement:  .toolbar)
     }
     

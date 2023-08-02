@@ -34,6 +34,7 @@ struct AlbumGridView: View {
         .onAppear {
             do {
                 try self.library.fetchAlbums()
+                try self.library.fetchPlaylists()
             } catch {
                 print(error.localizedDescription)
             }

@@ -28,12 +28,15 @@ class PlayAlbumThread: Thread {
         tell application "Music"
             
             if not (user playlist "\(playlistName)" exists) then
-                    make new user playlist with properties {name:"\(playlistName)"}
-                end if
+                make new user playlist with properties {name:"\(playlistName)"}
+                delay(0.1)
+            else
+                delete tracks of playlist "\(playlistName)"
+                delay(0.1)
+            end if
         
             set albumName to "\(albumName)"
             set playListName to "\(playlistName)"
-            delete playlist playListName
             set refTracks to (a reference to (tracks where album = albumName))
             
             set nTracks to count of refTracks
@@ -53,7 +56,7 @@ class PlayAlbumThread: Thread {
             end if
         end tell
         """
-        
+        print(src2)
         var error: NSDictionary?
         if let scriptObject = NSAppleScript(source: src2) {
             scriptObject.executeAndReturnError(&error)
