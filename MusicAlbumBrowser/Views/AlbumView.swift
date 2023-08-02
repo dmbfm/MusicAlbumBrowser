@@ -16,17 +16,40 @@ struct AlbumView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            if let nsimage = album.artwork {
+            //if let nsimage = album.artwork {
                 Button {
                     playAlbum(albumName: album.title)
                 } label: {
                     ZStack {
-                        Image(nsImage: nsimage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 100)
-                            .colorMultiply(hovered ? .init(white: 0.5) : .white)
-                            .clipped()
+                        if let nsimage = album.artwork {
+                            Image(nsImage: nsimage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 100)
+                                .colorMultiply(hovered ? .init(white: 0.5) : .white)
+                                .clipped()
+                                .cornerRadius(4)
+                                .shadow(radius: 2)
+                        } else {
+                            ZStack {
+                                
+                                LinearGradient(stops: [
+                                    .init(color: .white, location: -0.4),
+                                    .init(color: .pink, location: 1)
+                                ],
+                                               startPoint: .top,
+                                               endPoint: .bottom)
+                                
+                                Image(systemName: "opticaldisc.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding(25)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .cornerRadius(4)
+                            .shadow(radius: 2)
+                            .frame(width: 100, height: 100)
+                        }
                         
                         if hovered {
                             
@@ -63,7 +86,7 @@ struct AlbumView: View {
                     .frame(height: 100)
                 }
                 .buttonStyle(.plain)
-            }
+            //}
             Text(album.title)
             Text(album.albumArtist ?? "Various Artists")
                 .font(.caption)
@@ -78,6 +101,12 @@ struct AlbumView_Previews: PreviewProvider {
     static let nsimage = NSImage(named: "dr_dre_2001")!
     
     static var previews: some View {
-        AlbumView(album: Album(id: 1, title: "2001", albumArtist: "Dr. Dre", artwork: nsimage, genre: "Rap"))
+        AlbumView(album: Album(
+            id: 1,
+            title: "2001",
+            albumArtist: "Dr. Dre",
+            artwork: nil,
+            //artwork: nsimage,
+            genre: "Rap"))
     }
 }

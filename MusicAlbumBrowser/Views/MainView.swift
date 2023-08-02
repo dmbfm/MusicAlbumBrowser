@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 struct MainView: View {
     
     @EnvironmentObject var library: Library
 
-    @State private var selectedGenre: String? = ""
+    @State private var selectedGenre: Set<String> = [""]
     @State private var genreFilterString: String = ""
     
     var body: some View {
@@ -26,7 +27,7 @@ struct MainView: View {
                         
                 }
                 .tag("")
-                                
+                   
                 Section("Genres") {
                     
                     HStack {
@@ -64,14 +65,25 @@ struct MainView: View {
             AlbumGridView()
         }
         .onChange(of: self.selectedGenre) { newValue in
-            if let genre = newValue, genre != "" {
-                self.library.albumFilter = .genre(genre)
-            } else {
+            if self.selectedGenre.contains("") {
+                self.selectedGenre = [""]
                 self.library.albumFilter = .none
+            } else {
+                self.library.albumFilter = .genre(self.selectedGenre.sorted())
             }
             
             self.library.sortAndFilter()
+            
         }
+//        .onChange(of: self.selectedGenre) { newValue in
+//            if let genre = newValue, genre != "" {
+//                self.library.albumFilter = .genre([genre])
+//            } else {
+//                self.library.albumFilter = .none
+//            }
+//
+//            self.library.sortAndFilter()
+//        }
 //        .onChange(of: self.genreFilterString) { newValue in
 //            self.library.genresFilterString =
 //        }

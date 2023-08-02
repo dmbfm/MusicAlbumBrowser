@@ -1,4 +1,4 @@
-# Music Album Browser
+# Music.app Album Browser
 
 ![](screenshot.png)
 

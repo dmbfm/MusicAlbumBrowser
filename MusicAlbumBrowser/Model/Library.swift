@@ -8,11 +8,6 @@
 import Foundation
 import AppKit
 
-enum AlbumFilter {
-    case none
-    case genre(String)
-}
-
 class Library: ObservableObject {
     
     @Published var albums: [Album] = []
@@ -86,11 +81,11 @@ class Library: ObservableObject {
     func sortAndFilter() {
         self.sortedAlbums = albums.sorted(using: [firstComparator, secondComparator])
         
-        guard case .genre(let genre) = self.albumFilter else {
+        guard case .genre(let genres) = self.albumFilter else {
             return
         }
         
-        self.sortedAlbums = sortedAlbums.filter({ $0.genre == genre})
+        self.sortedAlbums = sortedAlbums.filter({ genres.contains($0.genre) })
     }
     
     func filterGenres(by searchString: String) {
