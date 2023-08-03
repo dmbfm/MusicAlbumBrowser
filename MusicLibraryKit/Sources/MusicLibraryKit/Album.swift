@@ -17,14 +17,16 @@ public struct Album: Identifiable, Equatable {
     public var genre: String
     public var year: Int
     public var artwork: NSImage?
+    public var originalArtwork: NSImage?
     
-    public init(id: UInt64, title: String, artist: String? = nil, genre: String, year: Int, artwork: NSImage? = nil) {
+    public init(id: UInt64, title: String, artist: String? = nil, genre: String, year: Int, artwork: NSImage? = nil, originalArtwork: NSImage? = nil) {
         self.id = id
         self.title = title
         self.artist = artist ?? ""
         self.genre = genre
         self.year = year
         self.artwork = artwork
+        self.originalArtwork = originalArtwork
     }
 }
 
@@ -39,6 +41,7 @@ public extension Album {
         self.artist = track.album.albumArtist ?? "Various Artists"
         self.genre = track.genre
         self.year = track.year
+        self.originalArtwork = track.artwork?.image
         self.artwork = track.artwork?.image?.resized(to: NSSize(width: 100, height: 100))
     }
 }

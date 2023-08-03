@@ -15,6 +15,10 @@ struct AlbumView: View {
     @State private var hovered = false
     @State private var playSymbolHovered = false
     
+    @Environment(\.openWindow) private var openWindow
+    
+    @EnvironmentObject var globalState: GlobalState
+    
     var body: some View {
         VStack(alignment: .center) {
             //if let nsimage = album.artwork {
@@ -88,9 +92,16 @@ struct AlbumView: View {
                 }
                 .buttonStyle(.plain)
             //}
-            Text(album.title)
-            Text(album.artist ?? "Various Artists")
-                .font(.caption)
+            Button {
+                globalState.detailAlbum = album
+                openWindow(id: "detail")
+            } label: {
+                VStack {
+                    Text(album.title)
+                    Text(album.artist)
+                        .font(.caption)
+                }
+            }.buttonStyle(.plain)
             Spacer()
         }
         .frame(height: 150)
