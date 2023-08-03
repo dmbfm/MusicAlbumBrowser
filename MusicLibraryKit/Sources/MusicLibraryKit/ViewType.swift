@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum ViewType {
+    case all
+    case filtered(genres: [UUID], playlists: [UUID])
+}
