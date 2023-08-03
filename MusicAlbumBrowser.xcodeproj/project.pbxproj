@@ -25,6 +25,7 @@
 		AE52A4EF2A79D49400490DA2 /* AlbumFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4EE2A79D49400490DA2 /* AlbumFilter.swift */; };
 		AE52A4F22A7AB1F800490DA2 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4F12A7AB1F800490DA2 /* Playlist.swift */; };
 		AE52A4F42A7AC1AA00490DA2 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4F32A7AC1AA00490DA2 /* Genre.swift */; };
+		AE52A4F62A7B250200490DA2 /* AlbumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4F52A7B250200490DA2 /* AlbumCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		AE52A4EE2A79D49400490DA2 /* AlbumFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumFilter.swift; sourceTree = "<group>"; };
 		AE52A4F12A7AB1F800490DA2 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AE52A4F32A7AC1AA00490DA2 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		AE52A4F52A7B250200490DA2 /* AlbumCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollection.swift; sourceTree = "<group>"; };
+		AEBEEF622A7B3B70000890A6 /* MusicLibraryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MusicLibraryKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				AE52A4C62A79CBCB00490DA2 /* MusicAlbumBrowser */,
+				AEBEEF622A7B3B70000890A6 /* MusicLibraryKit */,
 				AE52A4ED2A79D2C800490DA2 /* README.md */,
 				AE30A28D2A793300006ECA86 /* Products */,
 			);
@@ -124,6 +128,7 @@
 				AE52A4D42A79CBCB00490DA2 /* SortType.swift */,
 				AE52A4F12A7AB1F800490DA2 /* Playlist.swift */,
 				AE52A4F32A7AC1AA00490DA2 /* Genre.swift */,
+				AE52A4F52A7B250200490DA2 /* AlbumCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				AE52A4DD2A79CBCB00490DA2 /* MusicAlbumsBrowser.swift in Sources */,
 				AE52A4EA2A79CBCB00490DA2 /* MainView.swift in Sources */,
 				AE52A4E62A79CBCB00490DA2 /* SortType.swift in Sources */,
+				AE52A4F62A7B250200490DA2 /* AlbumCollection.swift in Sources */,
 				AE52A4E52A79CBCB00490DA2 /* SortOrder.swift in Sources */,
 				AE52A4E42A79CBCB00490DA2 /* Artist.swift in Sources */,
 				AE52A4E12A79CBCB00490DA2 /* NSImage+pngData.swift in Sources */,
@@ -375,7 +381,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmbfm.musicshit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmbfm.music-album-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -405,7 +411,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dmbfm.musicshit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dmbfm.music-album-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

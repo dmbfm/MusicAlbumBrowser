@@ -44,7 +44,7 @@ class iTunesService {
             var albums: [Int:Album] = [:]
             
             for item in playlist.items {
-            
+
                 if item.mediaKind != .kindSong {
                     continue
                 }

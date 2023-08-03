@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Genre: Identifiable {
-    var id = UUID()
+struct Genre: Identifiable, Hashable {
+    let uuid = UUID()
+    var id: String { name }
     var name: String
 }

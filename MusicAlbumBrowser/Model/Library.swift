@@ -12,8 +12,8 @@ class Library: ObservableObject {
     
     @Published var albums: [Album] = []
     @Published var sortedAlbums: [Album] = []
-    @Published var genres: Set<String> = []
-    @Published var filteredGenres: Set<String> = []
+    @Published var genres: [Genre] = []
+    @Published var filteredGenres: [Genre] = []
     
     @Published var playlists: [Playlist] = []
     
@@ -91,7 +91,7 @@ class Library: ObservableObject {
     }
     
     func filterGenres(by searchString: String) {
-        self.filteredGenres = self.genres.filter({ $0.contains(searchString) })
+        self.filteredGenres = self.genres.filter({ $0.name.contains(searchString) })
     }
     
     func fetchAlbums() throws {
@@ -115,13 +115,15 @@ class Library: ObservableObject {
     }
     
     func updateGenres() {
-        self.genres = []
+        var genres: [String:Genre] = [:]
         
         for album in albums {
-            if album.genre != "" {
-                self.genres.insert(album.genre)
+            if album.genre != "", genres[album.genre] == nil {
+                genres[album.genre] = Genre(name: album.genre)
             }
         }
+        
+        self.genres = genres.map({ $1 })
         
         self.updateFilteredGenres()
     }
@@ -130,7 +132,7 @@ class Library: ObservableObject {
         if genresFilterString == "" {
             self.filteredGenres = self.genres
         } else {
-            self.filteredGenres = self.genres.filter({ $0.localizedCaseInsensitiveContains(self.genresFilterString) })
+            self.filteredGenres = self.genres.filter({ $0.name.localizedCaseInsensitiveContains(self.genresFilterString) })
         }
     }
     

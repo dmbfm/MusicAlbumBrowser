@@ -7,26 +7,26 @@
 
 import SwiftUI
 
+let allAlbumsUUID = UUID()
 
 struct MainView: View {
     
     @EnvironmentObject var library: Library
-
-    @State private var selectedGenre: Set<String> = [""]
+    
+    @State private var selectedNavigationItems: Set<UUID> = []
     @State private var genreFilterString: String = ""
     
     var body: some View {
         NavigationSplitView {
-            List(selection: self.$selectedGenre) {
+            List(selection: self.$selectedNavigationItems) {
                 HStack {
                     Image(systemName: "music.note.house.fill")
                         .foregroundColor(.pink)
-
+                    
                     Text("All Albums")
-                        
                 }
-                .tag("")
-                   
+                .tag(allAlbumsUUID)
+                
                 Section("Genres") {
                     HStack {
                         Image(systemName: "line.3.horizontal.decrease.circle")
@@ -49,12 +49,13 @@ struct MainView: View {
                         }
                     }
                     
-                    ForEach(self.library.filteredGenres.sorted(), id: \.self) { genre in
+                    ForEach(self.library.filteredGenres.sorted(by: { $0.name < $1.name })) { genre in
                         HStack {
                             Image(systemName: "music.quarternote.3")
                                 .foregroundColor(.pink)
-                            Text(genre)
+                            Text(genre.name)
                         }
+                        .tag(genre.uuid)
                     }
                 }
                 
@@ -71,14 +72,24 @@ struct MainView: View {
         } detail: {
             AlbumGridView()
         }
-        .onChange(of: self.selectedGenre) { newValue in
-            if self.selectedGenre.contains("") {
-                self.selectedGenre = [""]
+        .onChange(of: self.selectedNavigationItems) { newValue in
+            
+            if self.selectedNavigationItems.contains(allAlbumsUUID) {
+                self.selectedNavigationItems = [allAlbumsUUID]
                 self.library.albumFilter = .none
             } else {
-                self.library.albumFilter = .genre(self.selectedGenre.sorted())
+                //self.library.albumFilter = .genre(<#T##[String]#>)
             }
             
+            
+            
+            //            if self.selectedGenre.contains("") {
+            //                self.selectedGenre = [""]
+            //                self.library.albumFilter = .none
+            //            } else {
+            //                self.library.albumFilter = .genre(self.selectedGenre.sorted())
+            //            }
+            //
             self.library.sortAndFilter()
             
         }
@@ -88,7 +99,7 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
-        static var previews: some View {
+    static var previews: some View {
         MainView()
             .environmentObject(Library.preview())
     }
