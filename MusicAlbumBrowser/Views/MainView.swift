@@ -13,7 +13,7 @@ struct MainView: View {
     
     @EnvironmentObject var library: Library
     
-    @State private var selectedNavigationItems: Set<UUID> = []
+    @State private var selectedNavigationItems: Set<UUID> = [Library.allItemsUUID]
     @State private var genreFilterString: String = ""
     
     var body: some View {
@@ -25,7 +25,7 @@ struct MainView: View {
                     
                     Text("All Albums")
                 }
-                .tag(allAlbumsUUID)
+                .tag(Library.allItemsUUID)
                 
                 Section("Genres") {
                     HStack {
@@ -75,24 +75,13 @@ struct MainView: View {
             AlbumGridView()
         }
         .onChange(of: self.selectedNavigationItems) { newValue in
-            
-            if self.selectedNavigationItems.contains(allAlbumsUUID) {
-                self.selectedNavigationItems = [allAlbumsUUID]
-                //self.library.albumFilter = .none
+            if self.selectedNavigationItems.contains(Library.allItemsUUID) {
+                self.selectedNavigationItems = [Library.allItemsUUID]
             } else {
                 //self.library.albumFilter = .genre(<#T##[String]#>)
             }
             
-            
-            
-            //            if self.selectedGenre.contains("") {
-            //                self.selectedGenre = [""]
-            //                self.library.albumFilter = .none
-            //            } else {
-            //                self.library.albumFilter = .genre(self.selectedGenre.sorted())
-            //            }
-            //
-            //self.library.sortAndFilter()
+            self.library.updateView(self.selectedNavigationItems)
             
         }
         .searchable(text: .constant("Two!"), placement:  .toolbar)

@@ -15,7 +15,9 @@ class Library: ObservableObject {
     @Published var albums: [Album] = []
     @Published var genres: [Genre] = []
     
-    @Published var view: ViewType = .all
+    var view: ViewType = .all
+    
+    static let allItemsUUID = UUID()
     
     let service: iTunesService
     var musicLibrary: MusicLibrary! = nil
@@ -25,18 +27,38 @@ class Library: ObservableObject {
     }
     
     func fetchLibrary() async {
-        let task = Task{
+        let task = Task{ @MainActor in
             self.musicLibrary = MusicLibrary(service: self.service)
             self.genres = self.musicLibrary.genreCollection.genres.map { $1 }
             self.albums = self.musicLibrary.view(for: self.view)
         }
         _ = await task.value
     }
+    
+    func updateView(_ selection: Set<UUID>) {
+        
+        if selection.contains(Self.allItemsUUID) {
+            self.view = .all
+        } else {
+            
+            var genreUUIDs: [UUID] = []
+            
+            for uuid in selection {
+                if self.musicLibrary.genreCollection.genres[uuid] != nil {
+                    genreUUIDs.append(uuid)
+                }
+            }
+            
+            self.view = .filtered(genres: genreUUIDs, playlists: [])
+        }
+        
+        self.albums = self.musicLibrary.view(for: self.view)
+    }
 }
 
 extension Library {
     static func preview() -> Library {
-        var library = try! Library()
+        let library = try! Library()
         return library
     }
 }

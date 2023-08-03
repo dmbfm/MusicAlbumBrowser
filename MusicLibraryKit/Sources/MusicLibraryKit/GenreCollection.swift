@@ -21,7 +21,7 @@ extension GenreCollection {
         
         for genre in genreSet {
             let id = UUID()
-            self.genres[UUID()] = Genre(id: id, name: genre )
+            self.genres[id] = Genre(id: id, name: genre )
         }
     }
 }
