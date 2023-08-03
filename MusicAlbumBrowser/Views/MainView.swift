@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MusicLibraryKit
 
 let allAlbumsUUID = UUID()
 
@@ -15,6 +16,16 @@ struct MainView: View {
     
     @State private var selectedNavigationItems: Set<UUID> = [Library.allItemsUUID]
     @State private var genreFilterString: String = ""
+    
+    var displayGenres: [Genre] {
+        self.library.genres.filter { genre in
+            if self.genreFilterString == "" {
+                return true
+            }
+            
+            return genre.name.localizedCaseInsensitiveContains(self.genreFilterString)
+        }.sorted(by: { $0.name < $1.name })
+    }
     
     var body: some View {
         NavigationSplitView {
@@ -32,13 +43,13 @@ struct MainView: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                         ZStack(alignment: .trailing) {
                             TextField("",
-                                      text: .constant(""), //self.$library.genresFilterString,
+                                      text: self.$genreFilterString,
                                       prompt: Text("Filter Genres..."))
                             .textFieldStyle(.roundedBorder)
                             .padding(.leading, -10)
                             
                             Button {
-                                //self.library.genresFilterString = ""
+                                self.genreFilterString = ""
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                             }
@@ -49,8 +60,7 @@ struct MainView: View {
                         }
                     }
                     
-                    //ForEach(self.library.filteredGenres.sorted(by: { $0.name < $1.name })) { genre in
-                    ForEach(self.library.genres.sorted(by: { $0.name < $1.name })) { genre in
+                    ForEach(self.displayGenres) { genre in
 
                         HStack {
                             Image(systemName: "music.quarternote.3")
@@ -91,7 +101,6 @@ struct MainView: View {
             }
         }
     }
-    
 }
 
 struct MainView_Previews: PreviewProvider {
