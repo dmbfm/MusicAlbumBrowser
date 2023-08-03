@@ -70,16 +70,6 @@ struct MainView: View {
                         .tag(genre.id)
                     }
                 }
-                
-//                Section("Playlists") {
-//                    ForEach(self.library.playlists) { playlist in
-//                        HStack {
-//                            Image(systemName: "music.note.list")
-//                                .foregroundColor(.pink)
-//                            Text(playlist.name)
-//                        }
-//                    }
-//                }
             }
         } detail: {
             AlbumGridView()
@@ -94,7 +84,6 @@ struct MainView: View {
             self.library.updateView(self.selectedNavigationItems)
             
         }
-        .searchable(text: .constant("Two!"), placement:  .toolbar)
         .onAppear {
             Task {
                 await self.library.fetchLibrary()

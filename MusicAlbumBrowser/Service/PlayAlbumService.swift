@@ -27,7 +27,7 @@ class PlayAlbumThread: Thread {
         
         let playlistName = "MusicAlbumBrowserPlaylist"
         
-        let src2 = """
+        let src = """
         tell application "Music"
             
 
@@ -56,9 +56,11 @@ class PlayAlbumThread: Thread {
             end if
         end tell
         """
+        
+        print(src)
 
         var error: NSDictionary?
-        if let scriptObject = NSAppleScript(source: src2) {
+        if let scriptObject = NSAppleScript(source: src) {
             scriptObject.executeAndReturnError(&error)
             if let error = error {
                 print(error)

@@ -12,6 +12,7 @@ import MusicLibraryKit
 class Library: ObservableObject {
     @Published var albums: [Album] = []
     @Published var genres: [Genre] = []
+    @Published var playlists: [Playlist] = []
     
     var view: ViewType = .all
     
@@ -28,6 +29,7 @@ class Library: ObservableObject {
         let task = Task{ @MainActor in
             self.musicLibrary = MusicLibrary(service: self.service)
             self.genres = self.musicLibrary.genreCollection.genres.map { $1 }
+            self.playlists = self.musicLibrary.playlistCollection.playlists.map { $1 }
             self.albums = self.musicLibrary.view(for: self.view)
         }
         _ = await task.value
@@ -40,14 +42,17 @@ class Library: ObservableObject {
         } else {
             
             var genreUUIDs: [UUID] = []
+            var playlistUUIDs: [UUID] = []
             
             for uuid in selection {
                 if self.musicLibrary.genreCollection.genres[uuid] != nil {
                     genreUUIDs.append(uuid)
+                } else if self.musicLibrary.playlistCollection.playlists[uuid] != nil {
+                    playlistUUIDs.append(uuid)
                 }
             }
             
-            self.view = .filtered(genres: genreUUIDs, playlists: [])
+            self.view = .filtered(genres: genreUUIDs, playlists: playlistUUIDs)
         }
         
         self.albums = self.musicLibrary.view(for: self.view)

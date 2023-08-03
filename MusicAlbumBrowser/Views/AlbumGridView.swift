@@ -7,13 +7,33 @@
 
 import SwiftUI
 import iTunesLibrary
-
+import MusicLibraryKit
 
 struct AlbumGridView: View {
     @EnvironmentObject var library: Library
     
     @State private var showSortPopover = false
+    @State private var albumSortType: AlbumSortType = .album;
+    @State private var albumSortOrder: AlbumSortOrder = .ascending;
+    @State private var albumFilterText: String = ""
     
+    
+    var displayAlbums: [Album] {
+        var albums = self.library.albums
+        
+        if self.albumFilterText != "" {
+            albums = albums.filter {
+                $0.title.localizedCaseInsensitiveContains(self.albumFilterText) ||
+                $0.artist.localizedCaseInsensitiveContains(self.albumFilterText)
+            }
+        }
+        
+        let result = albums.sorted(by: self.albumSortType  == .album ? \.title : \.artist,
+                                   comparator: albumSortOrder == .ascending ? (<) : (>))
+        
+        return result
+    }
+
     let placeholder = NSImage(named: "placeholder")!
     var body: some View {
         
@@ -23,7 +43,7 @@ struct AlbumGridView: View {
             
             ScrollView {
                 LazyVGrid(columns: [.init(.adaptive(minimum: 100))]) {
-                    ForEach(self.library.albums) { album in
+                    ForEach(self.displayAlbums) { album in
                         AlbumView(album: album)
                     }
                 }
@@ -31,69 +51,43 @@ struct AlbumGridView: View {
             }
             
         }
-        .onAppear {
-//            do {
-//                try self.library.fetchAlbums()
-//                try self.library.fetchPlaylists()
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-        }
         .toolbar {
             ToolbarItem {
                 Button {
-                    if let album = self.library.albums.randomElement() {
+                    if let album = self.displayAlbums.randomElement() {
                         playAlbum(album: album)
                     }
                 } label: {
                     Image(systemName: "shuffle")
                 }
+                .help("Play a random album")
             }
-//            ToolbarItem(placement: .automatic) {
-//
-//
-//                Menu {
-//
-//                    Picker(selection: self.$library.sortType) {
-//                        Button("Album"){}.tag(SortType.album)
-//                        Button("Artist"){}.tag(SortType.artist)
-//                    } label: {}.pickerStyle(.inline)
-//
-//                    Divider()
-//
-//                    Picker(selection: self.$library.sortTypeSecond) {
-//
-//                        if self.library.sortType != .album {
-//                            Button("Album"){}
-//                                .tag(SortType.album)
-//                        }
-//
-//                        if self.library.sortType != .artist {
-//                            Text("Artist")
-//                                .tag(SortType.artist)
-//                        }
-//
-//                    } label: {}.pickerStyle(.inline)
-//
-//                    Divider()
-//
-//                    Picker(selection: self.$library.sortOrder) {
-//                        Button("Ascending"){}.tag(Foundation.SortOrder.forward)
-//                        Button("Descending"){}.tag(Foundation.SortOrder.reverse)
-//                    } label: {}.pickerStyle(.inline)
-//
-//                } label: {
-//                    HStack {
-//                        Image(systemName: "arrow.up.arrow.down")
-//                        Image(systemName: "chevron.down")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 8)
-//                    }
-//                }
-//            }
+            
+            ToolbarItem {
+                Menu {
+                    Picker(selection: self.$albumSortType) {
+                        Button("Album Title"){}.tag(AlbumSortType.album)
+                        Button("Artist Name"){}.tag(AlbumSortType.artist)
+                    } label: {}.pickerStyle(.inline)
+                    
+                    Divider()
+                    
+                    Picker(selection: self.$albumSortOrder) {
+                        Button("Ascending"){}.tag(AlbumSortOrder.ascending)
+                        Button("Descending"){}.tag(AlbumSortOrder.descending)
+                    } label: {}.pickerStyle(.inline)
+                } label: {
+                    HStack {
+                        Image(systemName: "arrow.up.arrow.down")
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 8)
+                    }
+                }
+            }
         }
-        
+        .searchable(text: self.$albumFilterText, placement: .toolbar)
     }
 }
 
