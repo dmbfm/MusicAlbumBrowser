@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct GenreCollection {
-    var genres: [UUID: Genre] = [:]
+public struct GenreCollection {
+    public var genres: [UUID: Genre] = [:]
 }
 
 extension GenreCollection {

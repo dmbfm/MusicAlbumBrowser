@@ -23,7 +23,7 @@ struct AlbumGridView: View {
             
             ScrollView {
                 LazyVGrid(columns: [.init(.adaptive(minimum: 100))]) {
-                    ForEach(self.library.sortedAlbums) { album in
+                    ForEach(self.library.albums) { album in
                         AlbumView(album: album)
                     }
                 }
@@ -32,67 +32,66 @@ struct AlbumGridView: View {
             
         }
         .onAppear {
-            do {
-                try self.library.fetchAlbums()
-                try self.library.fetchPlaylists()
-            } catch {
-                print(error.localizedDescription)
-            }
+//            do {
+//                try self.library.fetchAlbums()
+//                try self.library.fetchPlaylists()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
         }
         .toolbar {
             ToolbarItem {
                 Button {
-                    if let album = self.library.sortedAlbums.randomElement() {
+                    if let album = self.library.albums.randomElement() {
                         playAlbum(album: album)
                     }
                 } label: {
                     Image(systemName: "shuffle")
                 }
-                
             }
-            ToolbarItem(placement: .automatic) {
-                
-             
-                Menu {
-                    
-                    Picker(selection: self.$library.sortType) {
-                        Button("Album"){}.tag(SortType.album)
-                        Button("Artist"){}.tag(SortType.artist)
-                    } label: {}.pickerStyle(.inline)
-                    
-                    Divider()
-                    
-                    Picker(selection: self.$library.sortTypeSecond) {
-                        
-                        if self.library.sortType != .album {
-                            Button("Album"){}
-                                .tag(SortType.album)
-                        }
-
-                        if self.library.sortType != .artist {
-                            Text("Artist")
-                                .tag(SortType.artist)
-                        }
-                            
-                    } label: {}.pickerStyle(.inline)
-                    
-                    Divider()
-                    
-                    Picker(selection: self.$library.sortOrder) {
-                        Button("Ascending"){}.tag(Foundation.SortOrder.forward)
-                        Button("Descending"){}.tag(Foundation.SortOrder.reverse)
-                    } label: {}.pickerStyle(.inline)
-                    
-                } label: {
-                    HStack {
-                        Image(systemName: "arrow.up.arrow.down")
-                        Image(systemName: "chevron.down")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 8)
-                    }
-                }
-            }
+//            ToolbarItem(placement: .automatic) {
+//
+//
+//                Menu {
+//
+//                    Picker(selection: self.$library.sortType) {
+//                        Button("Album"){}.tag(SortType.album)
+//                        Button("Artist"){}.tag(SortType.artist)
+//                    } label: {}.pickerStyle(.inline)
+//
+//                    Divider()
+//
+//                    Picker(selection: self.$library.sortTypeSecond) {
+//
+//                        if self.library.sortType != .album {
+//                            Button("Album"){}
+//                                .tag(SortType.album)
+//                        }
+//
+//                        if self.library.sortType != .artist {
+//                            Text("Artist")
+//                                .tag(SortType.artist)
+//                        }
+//
+//                    } label: {}.pickerStyle(.inline)
+//
+//                    Divider()
+//
+//                    Picker(selection: self.$library.sortOrder) {
+//                        Button("Ascending"){}.tag(Foundation.SortOrder.forward)
+//                        Button("Descending"){}.tag(Foundation.SortOrder.reverse)
+//                    } label: {}.pickerStyle(.inline)
+//
+//                } label: {
+//                    HStack {
+//                        Image(systemName: "arrow.up.arrow.down")
+//                        Image(systemName: "chevron.down")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 8)
+//                    }
+//                }
+//            }
         }
         
     }

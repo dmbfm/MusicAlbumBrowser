@@ -13,7 +13,7 @@ struct MusicAlbumsBrowser: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(Library())
+                .environmentObject(try! Library())
         }
     }
 }

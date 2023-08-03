@@ -8,18 +8,18 @@
 import Foundation
 import iTunesLibrary
 
-struct iTunesService {
-    var library: ITLibrary
+public struct iTunesService {
+    public var library: ITLibrary
     
-    init() throws {
+    public init() throws {
         try self.library = ITLibrary(apiVersion: "1.0")
     }
     
-    func fetchLibraryAlbums() -> AlbumCollection {
+    public func fetchLibraryAlbums() -> AlbumCollection {
         return AlbumCollection(from: self.library.allMediaItems)
     }
     
-    func fetchPlaylists() -> PlaylistCollection {
+    public func fetchPlaylists() -> PlaylistCollection {
         var result = PlaylistCollection()
         
         for playlist in self.library.allPlaylists {

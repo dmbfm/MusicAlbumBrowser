@@ -32,13 +32,13 @@ struct MainView: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                         ZStack(alignment: .trailing) {
                             TextField("",
-                                      text: self.$library.genresFilterString,
+                                      text: .constant(""), //self.$library.genresFilterString,
                                       prompt: Text("Filter Genres..."))
                             .textFieldStyle(.roundedBorder)
                             .padding(.leading, -10)
                             
                             Button {
-                                self.library.genresFilterString = ""
+                                //self.library.genresFilterString = ""
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                             }
@@ -49,25 +49,27 @@ struct MainView: View {
                         }
                     }
                     
-                    ForEach(self.library.filteredGenres.sorted(by: { $0.name < $1.name })) { genre in
+                    //ForEach(self.library.filteredGenres.sorted(by: { $0.name < $1.name })) { genre in
+                    ForEach(self.library.genres.sorted(by: { $0.name < $1.name })) { genre in
+
                         HStack {
                             Image(systemName: "music.quarternote.3")
                                 .foregroundColor(.pink)
                             Text(genre.name)
                         }
-                        .tag(genre.uuid)
+                        .tag(genre.id)
                     }
                 }
                 
-                Section("Playlists") {
-                    ForEach(self.library.playlists) { playlist in
-                        HStack {
-                            Image(systemName: "music.note.list")
-                                .foregroundColor(.pink)
-                            Text(playlist.name)
-                        }
-                    }
-                }
+//                Section("Playlists") {
+//                    ForEach(self.library.playlists) { playlist in
+//                        HStack {
+//                            Image(systemName: "music.note.list")
+//                                .foregroundColor(.pink)
+//                            Text(playlist.name)
+//                        }
+//                    }
+//                }
             }
         } detail: {
             AlbumGridView()
@@ -76,7 +78,7 @@ struct MainView: View {
             
             if self.selectedNavigationItems.contains(allAlbumsUUID) {
                 self.selectedNavigationItems = [allAlbumsUUID]
-                self.library.albumFilter = .none
+                //self.library.albumFilter = .none
             } else {
                 //self.library.albumFilter = .genre(<#T##[String]#>)
             }
@@ -90,10 +92,15 @@ struct MainView: View {
             //                self.library.albumFilter = .genre(self.selectedGenre.sorted())
             //            }
             //
-            self.library.sortAndFilter()
+            //self.library.sortAndFilter()
             
         }
         .searchable(text: .constant("Two!"), placement:  .toolbar)
+        .onAppear {
+            Task {
+                await self.library.fetchLibrary()
+            }
+        }
     }
     
 }

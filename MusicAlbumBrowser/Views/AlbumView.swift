@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MusicLibraryKit
 
 struct AlbumView: View {
     
@@ -88,7 +89,7 @@ struct AlbumView: View {
                 .buttonStyle(.plain)
             //}
             Text(album.title)
-            Text(album.albumArtist ?? "Various Artists")
+            Text(album.artist ?? "Various Artists")
                 .font(.caption)
             Spacer()
         }
@@ -101,12 +102,6 @@ struct AlbumView_Previews: PreviewProvider {
     static let nsimage = NSImage(named: "dr_dre_2001")!
     
     static var previews: some View {
-        AlbumView(album: Album(
-            id: 1,
-            title: "2001",
-            albumArtist: "Dr. Dre",
-            artwork: nil,
-            //artwork: nsimage,
-            genre: "Rap", year: 2001))
+        AlbumView(album: Album(id: 1, title: "2001", artist: "Dr. Dre", genre: "Rap", year: 2001))
     }
 }

@@ -8,8 +8,8 @@
 import Foundation
 import iTunesLibrary
 
-struct AlbumCollection {
-    var albums: [UInt64:Album]
+public struct AlbumCollection {
+    public var albums: [UInt64:Album]
 }
 
 extension AlbumCollection {
@@ -34,7 +34,7 @@ extension AlbumCollection {
 }
 
 extension AlbumCollection {
-    mutating func add(album: Album) {
+    public mutating func add(album: Album) {
         if self.albums[album.id] == nil {
             self.albums[album.id] = album
         }
@@ -42,7 +42,7 @@ extension AlbumCollection {
 }
 
 extension AlbumCollection {
-    func merge(with collection: AlbumCollection) -> AlbumCollection {
+    public func merge(with collection: AlbumCollection) -> AlbumCollection {
         var result = self
         
         for (_, album) in collection.albums {
@@ -54,7 +54,7 @@ extension AlbumCollection {
 }
 
 extension AlbumCollection {
-    func filtered(byGenre genre: String) -> AlbumCollection {
+    public func filtered(byGenre genre: String) -> AlbumCollection {
         let albums = self.albums.filter({ $1.genre == genre })
         return AlbumCollection(albums: albums)
     }

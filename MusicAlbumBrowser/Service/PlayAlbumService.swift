@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MusicLibraryKit
 
 func playAlbum(album: Album) {
     let task = PlayAlbumThread(albumName: album.title, albumYear: album.year)

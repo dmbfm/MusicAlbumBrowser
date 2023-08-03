@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Genre: Identifiable {
-    var id: UUID
-    var name: String
+public struct Genre: Identifiable {
+    public var id: UUID
+    public var name: String
 }

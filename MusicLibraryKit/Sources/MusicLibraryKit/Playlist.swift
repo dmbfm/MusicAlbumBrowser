@@ -8,11 +8,11 @@
 import Foundation
 import iTunesLibrary
 
-struct Playlist : Identifiable {
-    let id = UUID()
-    var persistentID: UInt64
-    var name: String
-    var albumCollection: AlbumCollection
+public struct Playlist : Identifiable {
+    public let id = UUID()
+    public var persistentID: UInt64
+    public var name: String
+    public var albumCollection: AlbumCollection
 }
 
 extension Playlist {

@@ -1,14 +1,14 @@
 //
-//  NSImage+Resize.swift
-//  musicshit
+//  File.swift
+//  
 //
-//  Created by Daniel Fortes on 01/08/23.
+//  Created by Daniel Fortes on 03/08/23.
 //
 
 import Foundation
 import AppKit
-
-extension NSImage {
+public struct SharedStruct{}
+public extension NSImage {
     func resized(to newSize: NSSize) -> NSImage {
         let newImage = NSImage(size: newSize, flipped: false) { rect in
             self.draw(in: rect)

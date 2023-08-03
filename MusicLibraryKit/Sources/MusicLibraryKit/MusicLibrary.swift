@@ -8,13 +8,13 @@
 import Foundation
 import iTunesLibrary
 
-struct MusicLibrary {
-    var albumCollection: AlbumCollection
-    var genreCollection: GenreCollection
-    var playlistCollection: PlaylistCollection
+public struct MusicLibrary {
+    public var albumCollection: AlbumCollection
+    public var genreCollection: GenreCollection
+    public var playlistCollection: PlaylistCollection
 }
 
-extension MusicLibrary {
+public extension MusicLibrary {
     init() {
         self.albumCollection = AlbumCollection()
         self.genreCollection = GenreCollection()
@@ -22,7 +22,7 @@ extension MusicLibrary {
     }
 }
 
-extension MusicLibrary {
+public extension MusicLibrary {
     init(service: iTunesService) {
         self.albumCollection = service.fetchLibraryAlbums()
         self.genreCollection = GenreCollection(from: self.albumCollection)
@@ -30,7 +30,7 @@ extension MusicLibrary {
     }
 }
 
-extension MusicLibrary {
+public extension MusicLibrary {
     func view(for viewType: ViewType) -> [Album] {
         switch viewType {
         
