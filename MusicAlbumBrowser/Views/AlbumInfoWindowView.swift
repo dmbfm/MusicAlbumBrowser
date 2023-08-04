@@ -27,7 +27,24 @@ struct AlbumInfoWindowView: View {
                         .font(.largeTitle)
                     Text(album.artist)
                 }
-                .padding()
+                
+                Button {
+                    playAlbum(album: album)
+                } label: {
+                    ZStack {
+                        HStack {
+                            Image(systemName: "music.note")
+                            Text("Play In Music")
+                        }
+                    }
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 6)
+                }
+                .buttonStyle(.plain)
+                .background(LinearGradient(colors: [.pink, .red], startPoint: .bottomLeading, endPoint: .topTrailing))
+                .cornerRadius(4)
+                .foregroundColor(.white)
+                .padding(.bottom)
             }
         }
     }
