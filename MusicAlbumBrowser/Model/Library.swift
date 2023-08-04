@@ -26,13 +26,21 @@ class Library: ObservableObject {
     }
     
     func fetchLibrary() async {
-        let task = Task{ @MainActor in
+        let task = Task{
             self.musicLibrary = MusicLibrary(service: self.service)
-            self.genres = self.musicLibrary.genreCollection.genres.map { $1 }
-            self.playlists = self.musicLibrary.playlistCollection.playlists.map { $1 }
-            self.albums = self.musicLibrary.view(for: self.view)
+            let genres = self.musicLibrary.genreCollection.genres.map { $1 }
+            let playlists = self.musicLibrary.playlistCollection.playlists.map { $1 }
+            let albums = self.musicLibrary.view(for: self.view)
+            
+            let handle = Task { @MainActor  in
+                self.genres = genres
+                self.playlists = playlists
+                self.albums = albums
+            }
+           
+            _ = await handle.result
         }
-        _ = await task.value
+        _ = await task.result
     }
     
     func updateView(_ selection: Set<UUID>) {
