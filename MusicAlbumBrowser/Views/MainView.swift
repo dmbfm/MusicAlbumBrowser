@@ -85,9 +85,7 @@ struct MainView: View {
             
         }
         .onAppear {
-            Task {
-                await self.library.fetchLibrary()
-            }
+            self.library.fetchLibrary()
         }
     }
 }

@@ -25,22 +25,19 @@ class Library: ObservableObject {
         self.service = try iTunesService()
     }
     
-    func fetchLibrary() async {
-        let task = Task{
+    func fetchLibrary() {
+        Task { [unowned self] in
             self.musicLibrary = MusicLibrary(service: self.service)
             let genres = self.musicLibrary.genreCollection.genres.map { $1 }
             let playlists = self.musicLibrary.playlistCollection.playlists.map { $1 }
             let albums = self.musicLibrary.view(for: self.view)
             
-            let handle = Task { @MainActor  in
+            await MainActor.run { [unowned self] in
                 self.genres = genres
                 self.playlists = playlists
                 self.albums = albums
             }
-           
-            _ = await handle.result
         }
-        _ = await task.result
     }
     
     func updateView(_ selection: Set<UUID>) {
