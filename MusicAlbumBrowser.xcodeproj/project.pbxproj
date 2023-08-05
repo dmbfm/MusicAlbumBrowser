@@ -12,6 +12,12 @@
 		AE3D03282A7C36550083721F /* AlbumSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D03272A7C36550083721F /* AlbumSortOrder.swift */; };
 		AE3D032A2A7C580D0083721F /* AlbumInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D03292A7C580D0083721F /* AlbumInfoWindowView.swift */; };
 		AE3D032C2A7C58930083721F /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D032B2A7C58930083721F /* PreviewData.swift */; };
+		AE3D03382A7D7D950083721F /* TagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D03372A7D7D950083721F /* TagProvider.swift */; };
+		AE3D033C2A7D81370083721F /* CreateTagModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D033B2A7D81370083721F /* CreateTagModal.swift */; };
+		AE3D03402A7DAE6D0083721F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D033F2A7DAE6D0083721F /* Tag.swift */; };
+		AE3D03452A7DAEE80083721F /* TagsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D03442A7DAEE80083721F /* TagsStore.swift */; };
+		AE3D034D2A7DB6260083721F /* MusicAlbumBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D034C2A7DB6260083721F /* MusicAlbumBrowserTests.swift */; };
+		AE3D03522A7DB6380083721F /* TagsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3D03512A7DB6380083721F /* TagsStoreTests.swift */; };
 		AE52A4DD2A79CBCB00490DA2 /* MusicAlbumsBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4C72A79CBCB00490DA2 /* MusicAlbumsBrowser.swift */; };
 		AE52A4DE2A79CBCB00490DA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE52A4C82A79CBCB00490DA2 /* Assets.xcassets */; };
 		AE52A4DF2A79CBCB00490DA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE52A4CB2A79CBCB00490DA2 /* Preview Assets.xcassets */; };
@@ -19,11 +25,21 @@
 		AE52A4E22A79CBCB00490DA2 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4D02A79CBCB00490DA2 /* Library.swift */; };
 		AE52A4E82A79CBCB00490DA2 /* PlayAlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4D72A79CBCB00490DA2 /* PlayAlbumService.swift */; };
 		AE52A4E92A79CBCB00490DA2 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4D92A79CBCB00490DA2 /* AlbumView.swift */; };
-		AE52A4EA2A79CBCB00490DA2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DA2A79CBCB00490DA2 /* MainView.swift */; };
+		AE52A4EA2A79CBCB00490DA2 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DA2A79CBCB00490DA2 /* SidebarView.swift */; };
 		AE52A4EB2A79CBCB00490DA2 /* AlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */; };
 		AEBEEF652A7BEFDC000890A6 /* MusicLibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = AEBEEF642A7BEFDC000890A6 /* MusicLibraryKit */; };
 		AEBEEF682A7BF80B000890A6 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = AEBEEF672A7BF80B000890A6 /* Shared */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE3D03532A7DB6A10083721F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE30A2842A793300006ECA86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE30A28B2A793300006ECA86;
+			remoteInfo = MusicAlbumBrowser;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AE30A28C2A793300006ECA86 /* MusicAlbumBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicAlbumBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +48,13 @@
 		AE3D03272A7C36550083721F /* AlbumSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSortOrder.swift; sourceTree = "<group>"; };
 		AE3D03292A7C580D0083721F /* AlbumInfoWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoWindowView.swift; sourceTree = "<group>"; };
 		AE3D032B2A7C58930083721F /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		AE3D03372A7D7D950083721F /* TagProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProvider.swift; sourceTree = "<group>"; };
+		AE3D033B2A7D81370083721F /* CreateTagModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagModal.swift; sourceTree = "<group>"; };
+		AE3D033F2A7DAE6D0083721F /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		AE3D03442A7DAEE80083721F /* TagsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStore.swift; sourceTree = "<group>"; };
+		AE3D034A2A7DB6260083721F /* MusicAlbumBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAlbumBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE3D034C2A7DB6260083721F /* MusicAlbumBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumBrowserTests.swift; sourceTree = "<group>"; };
+		AE3D03512A7DB6380083721F /* TagsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsStoreTests.swift; sourceTree = "<group>"; };
 		AE52A4C72A79CBCB00490DA2 /* MusicAlbumsBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicAlbumsBrowser.swift; sourceTree = "<group>"; };
 		AE52A4C82A79CBCB00490DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE52A4C92A79CBCB00490DA2 /* MusicAlbumBrowser.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MusicAlbumBrowser.entitlements; sourceTree = "<group>"; };
@@ -40,7 +63,7 @@
 		AE52A4D02A79CBCB00490DA2 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		AE52A4D72A79CBCB00490DA2 /* PlayAlbumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayAlbumService.swift; sourceTree = "<group>"; };
 		AE52A4D92A79CBCB00490DA2 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
-		AE52A4DA2A79CBCB00490DA2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AE52A4DA2A79CBCB00490DA2 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumGridView.swift; sourceTree = "<group>"; };
 		AE52A4DC2A79CBCB00490DA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE52A4ED2A79D2C800490DA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -58,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AE3D03472A7DB6260083721F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				AE52A4C62A79CBCB00490DA2 /* MusicAlbumBrowser */,
+				AE3D034B2A7DB6260083721F /* MusicAlbumBrowserTests */,
 				AEBEEF622A7B3B70000890A6 /* MusicLibraryKit */,
 				AEBEEF662A7BF5CF000890A6 /* Shared */,
 				AE52A4ED2A79D2C800490DA2 /* README.md */,
@@ -77,13 +108,32 @@
 			isa = PBXGroup;
 			children = (
 				AE30A28C2A793300006ECA86 /* MusicAlbumBrowser.app */,
+				AE3D034A2A7DB6260083721F /* MusicAlbumBrowserTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AE3D03322A7D748F0083721F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AE3D03442A7DAEE80083721F /* TagsStore.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AE3D034B2A7DB6260083721F /* MusicAlbumBrowserTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE3D034C2A7DB6260083721F /* MusicAlbumBrowserTests.swift */,
+				AE3D03512A7DB6380083721F /* TagsStoreTests.swift */,
+			);
+			path = MusicAlbumBrowserTests;
 			sourceTree = "<group>";
 		};
 		AE52A4C62A79CBCB00490DA2 /* MusicAlbumBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				AE3D03322A7D748F0083721F /* Data */,
 				AE52A4CA2A79CBCB00490DA2 /* Preview Content */,
 				AE52A4CC2A79CBCB00490DA2 /* Extensions */,
 				AE52A4CF2A79CBCB00490DA2 /* Model */,
@@ -101,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				AE52A4CB2A79CBCB00490DA2 /* Preview Assets.xcassets */,
-				AE3D032B2A7C58930083721F /* PreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -118,9 +167,12 @@
 		AE52A4CF2A79CBCB00490DA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE3D032B2A7C58930083721F /* PreviewData.swift */,
 				AE52A4D02A79CBCB00490DA2 /* Library.swift */,
 				AE3D03252A7C364D0083721F /* AlbumSortType.swift */,
 				AE3D03272A7C36550083721F /* AlbumSortOrder.swift */,
+				AE3D03372A7D7D950083721F /* TagProvider.swift */,
+				AE3D033F2A7DAE6D0083721F /* Tag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,9 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				AE52A4D92A79CBCB00490DA2 /* AlbumView.swift */,
-				AE52A4DA2A79CBCB00490DA2 /* MainView.swift */,
+				AE52A4DA2A79CBCB00490DA2 /* SidebarView.swift */,
 				AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */,
 				AE3D03292A7C580D0083721F /* AlbumInfoWindowView.swift */,
+				AE3D033B2A7D81370083721F /* CreateTagModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +228,24 @@
 			productReference = AE30A28C2A793300006ECA86 /* MusicAlbumBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AE3D03492A7DB6260083721F /* MusicAlbumBrowserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE3D034E2A7DB6260083721F /* Build configuration list for PBXNativeTarget "MusicAlbumBrowserTests" */;
+			buildPhases = (
+				AE3D03462A7DB6260083721F /* Sources */,
+				AE3D03472A7DB6260083721F /* Frameworks */,
+				AE3D03482A7DB6260083721F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE3D03542A7DB6A10083721F /* PBXTargetDependency */,
+			);
+			name = MusicAlbumBrowserTests;
+			productName = MusicAlbumBrowserTests;
+			productReference = AE3D034A2A7DB6260083721F /* MusicAlbumBrowserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,6 +258,10 @@
 				TargetAttributes = {
 					AE30A28B2A793300006ECA86 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					AE3D03492A7DB6260083721F = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = AE30A28B2A793300006ECA86;
 					};
 				};
 			};
@@ -204,6 +279,7 @@
 			projectRoot = "";
 			targets = (
 				AE30A28B2A793300006ECA86 /* MusicAlbumBrowser */,
+				AE3D03492A7DB6260083721F /* MusicAlbumBrowserTests */,
 			);
 		};
 /* End PBXProject section */
@@ -215,6 +291,13 @@
 			files = (
 				AE52A4DF2A79CBCB00490DA2 /* Preview Assets.xcassets in Resources */,
 				AE52A4DE2A79CBCB00490DA2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE3D03482A7DB6260083721F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,17 +313,38 @@
 				AE3D032A2A7C580D0083721F /* AlbumInfoWindowView.swift in Sources */,
 				AE52A4E92A79CBCB00490DA2 /* AlbumView.swift in Sources */,
 				AE52A4DD2A79CBCB00490DA2 /* MusicAlbumsBrowser.swift in Sources */,
-				AE52A4EA2A79CBCB00490DA2 /* MainView.swift in Sources */,
+				AE52A4EA2A79CBCB00490DA2 /* SidebarView.swift in Sources */,
+				AE3D03452A7DAEE80083721F /* TagsStore.swift in Sources */,
 				AE3D03242A7C36240083721F /* Sequence+sorted.swift in Sources */,
+				AE3D03382A7D7D950083721F /* TagProvider.swift in Sources */,
 				AE52A4E12A79CBCB00490DA2 /* NSImage+pngData.swift in Sources */,
 				AE3D032C2A7C58930083721F /* PreviewData.swift in Sources */,
 				AE52A4EB2A79CBCB00490DA2 /* AlbumGridView.swift in Sources */,
+				AE3D033C2A7D81370083721F /* CreateTagModal.swift in Sources */,
+				AE3D03402A7DAE6D0083721F /* Tag.swift in Sources */,
 				AE3D03282A7C36550083721F /* AlbumSortOrder.swift in Sources */,
 				AE3D03262A7C364D0083721F /* AlbumSortType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AE3D03462A7DB6260083721F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE3D03522A7DB6380083721F /* TagsStoreTests.swift in Sources */,
+				AE3D034D2A7DB6260083721F /* MusicAlbumBrowserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE3D03542A7DB6A10083721F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE30A28B2A793300006ECA86 /* MusicAlbumBrowser */;
+			targetProxy = AE3D03532A7DB6A10083721F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AE30A2992A793302006ECA86 /* Debug */ = {
@@ -362,16 +466,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MusicAlbumBrowser/MusicAlbumBrowser.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicAlbumBrowser/Preview Content\"";
-				DEVELOPMENT_TEAM = F325FKC3ZQ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = F325FKC3ZQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicAlbumBrowser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Music.app Album Browser";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "We need this so that Music.app will play the albums.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -381,6 +488,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dmbfm.music-album-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Music Album Browser";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -392,16 +501,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MusicAlbumBrowser/MusicAlbumBrowser.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicAlbumBrowser/Preview Content\"";
-				DEVELOPMENT_TEAM = F325FKC3ZQ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = F325FKC3ZQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicAlbumBrowser/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Music.app Album Browser";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "We need this so that Music.app will play the albums.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -411,8 +523,55 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dmbfm.music-album-browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Music Album Browser";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AE3D034F2A7DB6260083721F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F325FKC3ZQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmbfm.MusicAlbumBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicAlbumBrowser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MusicAlbumBrowser";
+			};
+			name = Debug;
+		};
+		AE3D03502A7DB6260083721F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F325FKC3ZQ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmbfm.MusicAlbumBrowserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicAlbumBrowser.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MusicAlbumBrowser";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -433,6 +592,15 @@
 			buildConfigurations = (
 				AE30A29C2A793302006ECA86 /* Debug */,
 				AE30A29D2A793302006ECA86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE3D034E2A7DB6260083721F /* Build configuration list for PBXNativeTarget "MusicAlbumBrowserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE3D034F2A7DB6260083721F /* Debug */,
+				AE3D03502A7DB6260083721F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

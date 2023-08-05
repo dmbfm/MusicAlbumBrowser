@@ -18,6 +18,7 @@ struct AlbumView: View {
     @Environment(\.openWindow) private var openWindow
     
     @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var tagProvider: TagProvider
     
     var body: some View {
         VStack(alignment: .center) {
@@ -105,6 +106,41 @@ struct AlbumView: View {
             Spacer()
         }
         .frame(height: 150)
+        .contextMenu {
+            //Text("Tags: \(self.albumTags.count)")
+            Text("Tags")
+            Divider()
+            ForEach(self.tagProvider.tags) { tag in
+                let hasTag = tag.albumSet.contains(self.album.id)
+                Button {
+                    
+                    if hasTag {
+                        var _tag = tag
+                        _tag.albumSet.remove(self.album.id)
+                        self.tagProvider.updateTag(tag: _tag)
+                    } else {
+                        var _tag = tag
+                        _tag.albumSet.insert(album.id)
+                        self.tagProvider.updateTag(tag: _tag)
+                    }
+ 
+                    
+                    //self.tagProvider.storage.addTagsToAlbum(id: album.id, title: album.title, tags: [tag])
+                } label: {
+                    HStack {
+                        
+                        if hasTag {
+                            Image(systemName: "checkmark")
+                        }
+                        
+                        Text(tag.name)
+                    }
+                }
+            }
+        }
+        .onAppear {
+            //self.albumTags = tagsProvider.getTags(forAlbum: album)
+        }
     }
 }
 

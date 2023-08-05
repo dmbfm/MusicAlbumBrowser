@@ -10,7 +10,7 @@ import iTunesLibrary
 import AppKit
 import Shared
 
-public struct Album: Identifiable, Equatable {
+public struct Album: Identifiable, Equatable, Hashable {
     public var id: UInt64
     public var title: String
     public var artist: String

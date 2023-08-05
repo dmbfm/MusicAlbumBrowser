@@ -10,12 +10,17 @@ import MusicLibraryKit
 
 let allAlbumsUUID = UUID()
 
-struct MainView: View {
+struct SidebarView: View {
     
     @EnvironmentObject var library: Library
+    @EnvironmentObject var tagProvider: TagProvider
+    
     
     @State private var selectedNavigationItems: Set<UUID> = [Library.allItemsUUID]
     @State private var genreFilterString: String = ""
+    @State private var showCreateTagModal = false
+    @State private var showDeleteTagAlert = false
+    @State private var tagToDelete: Tag? = nil
     
     var displayGenres: [Genre] {
         self.library.genres.filter { genre in
@@ -25,6 +30,39 @@ struct MainView: View {
             
             return genre.name.localizedCaseInsensitiveContains(self.genreFilterString)
         }.sorted(by: { $0.name < $1.name })
+    }
+    
+    var tagsSection: some View {
+        Section {
+            ForEach(self.tagProvider.tags) { tag in
+                    HStack {
+                        Image(systemName: "number")
+                            .foregroundColor(.pink)
+                        Text(tag.name)
+                        Text("\(tag.albumSet.count)")
+                    }
+                    .contextMenu {
+                        Button("Create Tag...") {
+                            self.showCreateTagModal = true
+                        }
+                        Button("Delete Tag...") {
+                            self.tagToDelete = tag
+                            self.showDeleteTagAlert = true
+                        }
+                    }
+                    .tag(tag.id)
+                    
+            }
+        } header: {
+            Text("Tags")
+                .contextMenu {
+                    Button("Create Tag...") {
+                        self.showCreateTagModal = true
+                    }
+                }
+        }
+
+        
     }
     
     var body: some View {
@@ -61,7 +99,7 @@ struct MainView: View {
                     }
                     
                     ForEach(self.displayGenres) { genre in
-
+                        
                         HStack {
                             Image(systemName: "music.quarternote.3")
                                 .foregroundColor(.pink)
@@ -70,6 +108,9 @@ struct MainView: View {
                         .tag(genre.id)
                     }
                 }
+                
+                tagsSection
+                
             }
         } detail: {
             AlbumGridView()
@@ -84,15 +125,34 @@ struct MainView: View {
             self.library.updateView(self.selectedNavigationItems)
             
         }
+        .sheet(isPresented: self.$showCreateTagModal) {
+            CreateTagModal(showModal: self.$showCreateTagModal) { tagName in
+                self.addTag(named: tagName)
+            }
+        }
+        .alert("Delete Tag", isPresented: self.$showDeleteTagAlert) {
+            Button("Delete", role: .destructive) {
+                if let tag = self.tagToDelete {
+                    self.tagProvider.removeTag(tag: tag)
+                    self.tagToDelete = nil
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        }
         .onAppear {
             self.library.fetchLibrary()
+            self.tagProvider.fetchTags()
         }
+    }
+    
+    func addTag(named name: String) {
+        self.tagProvider.addTag(named: name)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        SidebarView()
             .environmentObject(Library.preview())
     }
 }
