@@ -19,8 +19,8 @@ class Library: ObservableObject {
     static let allItemsUUID = UUID()
     
     let service: iTunesService
-    var musicLibrary: MusicLibrary! = nil
-    
+    var musicLibrary: MusicLibrary? = nil
+        
     init() throws {
         self.service = try iTunesService()
     }
@@ -28,9 +28,14 @@ class Library: ObservableObject {
     func fetchLibrary() {
         Task { [unowned self] in
             self.musicLibrary = MusicLibrary(service: self.service)
-            let genres = self.musicLibrary.genreCollection.genres.map { $1 }
-            let playlists = self.musicLibrary.playlistCollection.playlists.map { $1 }
-            let albums = self.musicLibrary.view(for: self.view)
+            
+            guard let musicLibrary = self.musicLibrary else {
+                fatalError("Failed to create music library!")
+            }
+            
+            let genres = musicLibrary.genreCollection.genres.map { $1 }
+            let playlists = musicLibrary.playlistCollection.playlists.map { $1 }
+            let albums = musicLibrary.view(for: self.view)
             
             await MainActor.run { [unowned self] in
                 self.genres = genres
@@ -42,6 +47,10 @@ class Library: ObservableObject {
     
     func updateView(_ selection: Set<UUID>) {
         
+        guard let musicLibrary = self.musicLibrary else {
+            return
+        }
+        
         if selection.contains(Self.allItemsUUID) {
             self.view = .all
         } else {
@@ -50,9 +59,9 @@ class Library: ObservableObject {
             var playlistUUIDs: [UUID] = []
             
             for uuid in selection {
-                if self.musicLibrary.genreCollection.genres[uuid] != nil {
+                if musicLibrary.genreCollection.genres[uuid] != nil {
                     genreUUIDs.append(uuid)
-                } else if self.musicLibrary.playlistCollection.playlists[uuid] != nil {
+                } else if musicLibrary.playlistCollection.playlists[uuid] != nil {
                     playlistUUIDs.append(uuid)
                 }
             }
@@ -60,7 +69,19 @@ class Library: ObservableObject {
             self.view = .filtered(genres: genreUUIDs, playlists: playlistUUIDs)
         }
         
-        self.albums = self.musicLibrary.view(for: self.view)
+        self.albums = musicLibrary.view(for: self.view)
+        
+        for uuid in selection {
+            if let tag = TagProvider.shared.tags.first(where: { $0.id == uuid }) {
+                for albumID in tag.albumSet {
+                    if !self.albums.contains(where: { $0.id == albumID }) {
+                        if let album = musicLibrary.albumCollection.albums[albumID] {
+                            self.albums.append(album)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

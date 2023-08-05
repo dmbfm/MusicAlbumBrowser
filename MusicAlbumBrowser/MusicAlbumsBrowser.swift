@@ -8,16 +8,15 @@
 import SwiftUI
 import MusicLibraryKit
 
-class GlobalState: ObservableObject {
-    @Published var detailAlbum: Album? = nil
-}
 
 @main
 struct MusicAlbumsBrowser: App {
     
     @StateObject var library = try! Library()
-    @StateObject var tagProvider = TagProvider()
-    @StateObject var globalState = GlobalState()
+    @StateObject var tagProvider = TagProvider.shared
+    @StateObject var globalState = SharedState()
+    
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
         WindowGroup {

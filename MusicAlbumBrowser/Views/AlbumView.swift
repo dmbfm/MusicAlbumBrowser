@@ -17,7 +17,7 @@ struct AlbumView: View {
     
     @Environment(\.openWindow) private var openWindow
     
-    @EnvironmentObject var globalState: GlobalState
+    @EnvironmentObject var globalState: SharedState
     @EnvironmentObject var tagProvider: TagProvider
     
     var body: some View {

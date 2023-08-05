@@ -11,6 +11,8 @@ import MusicLibraryKit
 class TagProvider: ObservableObject {
     @Published var tags: [Tag] = []
     var store = TagsStore()
+    
+    static let shared = TagProvider()
 }
 
 extension TagProvider {

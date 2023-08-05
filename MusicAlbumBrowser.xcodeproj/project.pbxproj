@@ -29,6 +29,7 @@
 		AE52A4EB2A79CBCB00490DA2 /* AlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE52A4DB2A79CBCB00490DA2 /* AlbumGridView.swift */; };
 		AEBEEF652A7BEFDC000890A6 /* MusicLibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = AEBEEF642A7BEFDC000890A6 /* MusicLibraryKit */; };
 		AEBEEF682A7BF80B000890A6 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = AEBEEF672A7BF80B000890A6 /* Shared */; };
+		AED4F70B2A7E9A8F00B10FB3 /* SharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED4F70A2A7E9A8F00B10FB3 /* SharedState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		AE52A4ED2A79D2C800490DA2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AEBEEF622A7B3B70000890A6 /* MusicLibraryKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MusicLibraryKit; sourceTree = "<group>"; };
 		AEBEEF662A7BF5CF000890A6 /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Shared; sourceTree = "<group>"; };
+		AED4F70A2A7E9A8F00B10FB3 /* SharedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		AE52A4C62A79CBCB00490DA2 /* MusicAlbumBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				AED4F7092A7E9A6D00B10FB3 /* Env */,
 				AE3D03322A7D748F0083721F /* Data */,
 				AE52A4CA2A79CBCB00490DA2 /* Preview Content */,
 				AE52A4CC2A79CBCB00490DA2 /* Extensions */,
@@ -168,10 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				AE3D032B2A7C58930083721F /* PreviewData.swift */,
-				AE52A4D02A79CBCB00490DA2 /* Library.swift */,
 				AE3D03252A7C364D0083721F /* AlbumSortType.swift */,
 				AE3D03272A7C36550083721F /* AlbumSortOrder.swift */,
-				AE3D03372A7D7D950083721F /* TagProvider.swift */,
 				AE3D033F2A7DAE6D0083721F /* Tag.swift */,
 			);
 			path = Model;
@@ -202,6 +203,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AED4F7092A7E9A6D00B10FB3 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				AE3D03372A7D7D950083721F /* TagProvider.swift */,
+				AE52A4D02A79CBCB00490DA2 /* Library.swift */,
+				AED4F70A2A7E9A8F00B10FB3 /* SharedState.swift */,
+			);
+			path = Env;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE52A4E82A79CBCB00490DA2 /* PlayAlbumService.swift in Sources */,
+				AED4F70B2A7E9A8F00B10FB3 /* SharedState.swift in Sources */,
 				AE52A4E22A79CBCB00490DA2 /* Library.swift in Sources */,
 				AE3D032A2A7C580D0083721F /* AlbumInfoWindowView.swift in Sources */,
 				AE52A4E92A79CBCB00490DA2 /* AlbumView.swift in Sources */,
